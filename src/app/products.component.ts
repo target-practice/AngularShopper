@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { ProductsService } from './products.service'; 
+
 @Component({
     selector: 'products', // creates custom HTML element <products>
     template: 
@@ -17,7 +19,11 @@ export class ProductsComponent {
     
     title = "Browse Our Products";
 
-    products = ["product 1", "product 2", "product 3"];
+    products;
+
+    constructor(service: ProductsService) {
+    	this.products = service.getProducts();
+    }
 
     getTitle() {
     	return this.title;
